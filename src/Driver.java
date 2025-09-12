@@ -56,7 +56,12 @@ public class Driver {
                 algo = new SJF(allProcesses);
                 break;
             case "RR":
-                algo = new RR(allProcesses);
+                if (args[1].equals("schedule1.txt")) {
+                    algo = new RR(allProcesses, 5);
+                }
+                else if (args[1].equals("schedule2.txt")) {
+                    algo = new RR(allProcesses, 10);
+                }
                 break;
             case "SRTF":
                 algo = new SRTF(allProcesses);
