@@ -2,15 +2,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-/**
- * TODO: implement the RR (Round Robin) scheduling algorithm
- */
+
 public class RR extends Algorithm{
 
-    // The ready queue
     private final Queue<Process> readyQueue = new LinkedList<>();
 
-    // Processes that have not yet arrived
     private final Queue<Process> processesToArrive;
 
     private final int testCaseTime;
@@ -56,8 +52,8 @@ public class RR extends Algorithm{
                 System.out.print("At time " + now + ": ");
                 CPU.run(currentProcess, testCaseTime);
                 now += testCaseTime ;
-                currentProcess.setFinishTime(now);
                 currentProcess.setRemainingTime(remainingTime - testCaseTime);
+                currentProcess.setFinishTime(now);
                 while(!processesToArrive.isEmpty() &&
                         processesToArrive.peek().getArrivalTime()<=now){
                     readyQueue.add(processesToArrive.remove());
